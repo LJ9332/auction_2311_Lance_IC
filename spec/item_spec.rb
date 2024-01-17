@@ -18,17 +18,7 @@ RSpec.describe Item do
     describe '#initialize(item)' do
         it "has attributes" do
             expect(@item1.name).to eq("Chalkware Piggy Bank")
+            expect(@item2.name).to eq("Bamboo Picture Frame")
         end
     end
-
-    describe '#add_item' do
-        it "can add Item objects into auction array" do
-            expect(@auction.items).to eq([])
-            @auction.add_item(@item1)
-            @auction.add_item(@item2)
-            
-            expect(@auction.items).to eq([@item1, @item2])
-            expect(@auction.item_names).to eq(["Chalkware Piggy Bank", "Bamboo Picture Frame"])
-        end
-    end 
 end
