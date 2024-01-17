@@ -28,5 +28,30 @@ class Auction
           total_revenue += item.bids.values.sum
         end
         total_revenue
-      end
+    end
+
+    def add_bidder(attendee)
+        @bidders ||= []
+        @bidders << attendee.name unless @bidders.include?(attendee.name)
+    end
+    
+    def bidders
+        @bidders || []
+    end
+    
+    def bidder_info
+        bidder_info_hash = {}
+    
+        @items.each do |item|
+          item.bids.each do |attendee, bid_amount|
+            if bidder_info_hash[attendee].nil?
+              bidder_info_hash[attendee] = { budget: attendee.budget.to_i, items: [] }
+            end
+    
+            bidder_info_hash[attendee][:items] << item.name
+          end
+        end
+    
+        bidder_info_hash
+    end
 end
