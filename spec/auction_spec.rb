@@ -83,4 +83,27 @@ RSpec.describe Auction do
             expect(@auction.potential_revenue).to eq(87)
         end
     end
+
+    describe '#bidders' do
+        before(:each) do
+            @attendee1 = Attendee.new({name: 'Megan', budget: '$50'})
+            @attendee2 = Attendee.new({name: 'Bob', budget: '$75'})
+            @attendee3 = Attendee.new({name: 'Mike', budget: '$100'})
+        end
+
+        it "array of bidders' names" do
+            expect(@auction.bidders).to eq([])
+            @auction.add_bidder(@attendee1)
+            @auction.add_bidder(@attendee2)
+            @auction.add_bidder(@attendee3)
+            expect(@auction.bidders).to eq(["Megan", "Bob", "Mike"])
+        end
+    end
+
+    # describe '#bidder_info' do
+    #     it "Hash a attendee as key and sub hash 2 key budget and items" do
+
+    #     end
+    # end
+
 end
